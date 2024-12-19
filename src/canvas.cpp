@@ -41,7 +41,6 @@ void drawSpinningSpiral(uint8_t *canvas) {
     angle += angleIncrement;
     radius += radiusIncrement;
     if(i%4==0){
-      OLED_clear(0);
       OLED_displayImg(canvas);
       delay(20);
   }
@@ -63,14 +62,14 @@ void drawLine(int x0, int y0, int x1, int y1, uint8_t *canvas) {
   }
 }
 
-void drawSpinningCube(uint8_t *canvas) {
+void drawSpinningCube(uint8_t *canvas, unsigned int timeInMS) {
   float angle = 0.0;
   float angleIncrement = 0.05;
   int centerX = OLED_WIDTH / 4;
   int centerY = OLED_HEIGHT / 4;
   int size = 20;
-
-  while (true) {
+  int t = 0;
+  while (t < timeInMS) {
     fillCanvas(0,canvas);
     for (int i = 0; i < 8; i++) {
       float x = (i & 1 ? 1 : -1) * size;
@@ -141,5 +140,7 @@ void drawSpinningCube(uint8_t *canvas) {
     OLED_displayImg(canvas);
     angle += angleIncrement;
     delay(50);
+    t += 50;
+    Serial.println(t);
   }
 }

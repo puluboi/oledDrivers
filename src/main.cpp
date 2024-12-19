@@ -25,14 +25,14 @@ void loop() {
   delay(1000);
   OLED_clear(0);
   delay(1000);
-  OLED_clear(255);
+  drawSpinningSpiral(canvas);
   delay(1000);
   OLED_clear(0);
   delay(1000);
   meteor(6, 6, 48,canvas);
   
   fillCanvas(0,canvas);
-  drawSpinningCube(canvas);
+  drawSpinningCube(canvas, 20000);
   fillCanvas(0,canvas);
 }
 
